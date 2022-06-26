@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style type="text/css">
+        .key{
+            padding: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="calc">
+
+        <div class="display-box"></div>
+        <div class="keypad"></div>
+
+    </div>
+
+
+    <script type="text/javascript">
+
+        let operators = ["+","-","*","/","="];
+        let keyPad = document.querySelector(".keypad");
+        let displayBox = document.querySelector(".display-box");
+
+        for(let i=0; i<10; i++){
+            keyPad.innerHTML += `<button class="key" onclick="showInDisplay(${i})">${i}</button>`;
+        }
+
+        operators.forEach(x=> {
+            if(x === "="){
+                keyPad.innerHTML += `<button class="key" onclick="calc()">${x}</button>`;
+            }else{
+                keyPad.innerHTML += `<button class="key" onclick="showInDisplay('${x}')">${x}</button>`;
+            }
+        })
+
+        let showInDisplay = (x) => displayBox.innerText += x;       //arrow function
+
+
+        // function calc(){                                         //normal function
+        //     let result = eval(displayBox.innerText);
+        //     displayBox.innerText = result;
+        // }
+
+        let calc = _ => displayBox.innerText = eval(displayBox.innerText);      //arrowfunction
+
+    </script>
+
+</body>
+</html>

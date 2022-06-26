@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bulb On/Off</title>
+    <style type="text/css">
+        img{
+            width: 200px;
+        }
+
+        .detectArea{
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    
+    <img src="./img/icons/off.gif" id="bulb" alt="lightoff">
+
+    <br><br><br>
+
+    <div class="">
+
+        <button onclick="lightOn()">Light On</button>
+        <button onclick="lightOff()">Light Off</button>
+
+    </div>  <hr>
+
+    <div class="">
+        <button onclick="toggleSwitch()">Touch Button</button>
+    </div>  <hr>
+
+    <div class="">
+
+        <button onclick="toggleSwitch()">Switch 1</button>
+        <button onclick="toggleSwitch()">Switch 2</button>
+
+    </div>  <hr>
+
+    <div class="detectArea">Detected Area</div>
+
+
+
+
+
+    <script type="text/javascript">
+
+        let lightBulb = document.getElementById("bulb");
+
+        function lightOn(){
+            lightBulb.setAttribute("src","./img/icons/on.gif")
+        }
+
+        function lightOff(){
+            lightBulb.setAttribute("src","./img/icons/off.gif")
+        }
+
+        //switch1/2
+        function toggleSwitch(){
+            if(lightBulb.getAttribute("src") == "./img/icons/on.gif"){
+                lightOff();
+            }else{
+                lightOn();
+            }
+        }
+
+        //detect area
+        document.querySelector(".detectArea").addEventListener("mouseenter",function(){
+            lightOn();
+            setTimeout(lightOff,3000);
+        })
+    </script>
+</body>
+</html>
